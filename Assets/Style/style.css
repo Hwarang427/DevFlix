@@ -38,7 +38,7 @@ html,body{
 
 }
 
-.column form ipnut[type="submit"]{
+.column form input[type="submit"]{
     background-color: #4285f4;
     color: #fff;
     height: 36px;
