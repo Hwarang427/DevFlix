@@ -1,4 +1,6 @@
 <?php
+require_once("Includes/config.php");
+require_once("Includes/Classes/FormSanitizer.php");
     if(isset($_POST["submitButton"])){
         echo "Form was Submitted";
     }
@@ -14,7 +16,7 @@
             <div class="column">
             
             <div class="header">
-                <img src="Assets/Images/3def453e5906fed4f3e38cf791e6cb6b.png" title="Logo" alt= "Site Logo"/>
+                <img src="Assets/Images/DevFlixLogo.png" title="Logo" alt= "Site Logo"/>
                 <h3> Sign In</h3>
                 <span>to continue to DevFlix</span>
                 
