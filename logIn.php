@@ -1,8 +1,34 @@
 <?php
 require_once("Includes/config.php");
+require_once("Includes/Classes/Account.php");
 require_once("Includes/Classes/FormSanitizer.php");
+require_once("Includes/Classes/Constants.php");
+
+$account = new Account($con);
+
+
     if(isset($_POST["submitButton"])){
-        echo "Form was Submitted";
+        
+        $userName = FormSanitizer::sanitizeFormUsername($_POST['userName']);
+        
+        $password =FormSanitizer::sanitizeFormPassword($_POST['password']);
+        
+
+        $success=$account->login($userName, $password);
+
+        if($success == true){
+            //Store Session
+            $_SESSION["userLoggedIn"]=$userName;
+            header("Location: index.php");
+        }
+        
+    }
+    function getInputValue($name){
+        if(isset($_POST[$name])){
+            echo $_POST[$name];
+        }
+
+        
     }
 ?>
 <!DOCTYPE html>
@@ -24,7 +50,8 @@ require_once("Includes/Classes/FormSanitizer.php");
             </div>
 
             <form method="POST"> 
-                <input type ="text" name = "userName" placeholder = "Username" required>
+                <?php echo $account->getError(Constants::$loginFailed);?>
+                <input type ="text" name = "userName" placeholder = "Username"  value="<?php getInputValue("userName");?>"required>
                
                 <input type ="password" name = "password" placeholder = "Password" required>
                 

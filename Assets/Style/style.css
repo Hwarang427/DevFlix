@@ -86,3 +86,11 @@ html,body{
     font-weight: 100;
     text-decoration:none;
 }
+
+.errorMessage{
+    color: #F00;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+
+}
